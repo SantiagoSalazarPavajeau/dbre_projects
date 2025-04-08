@@ -1,0 +1,6 @@
+2025-04-08 11:18:57 - Starting backup for database: taskapp_dev
+2025-04-08 11:18:57 - Backup successful: taskapp_dev_20250408_111857.sql.gz
+2025-04-08 11:18:57 - Old backups cleaned (older than 7 days).
+2025-04-08 11:19:37 - Starting backup for database: taskapp_dev
+2025-04-08 11:19:37 - Backup successful: taskapp_dev_20250408_111937.sql.gz
+2025-04-08 11:19:37 - Old backups cleaned (older than 7 days).
