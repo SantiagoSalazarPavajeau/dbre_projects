@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-main
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql-main
+  template:
+    metadata:
+      labels:
+        app: mysql-main
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:8.0
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: mysql-root-password
+            - name: MYSQL_DATABASE
+              value: taskapp_dev
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: mysql-persistent-storage
+              mountPath: /var/lib/mysql
+          args:
+            - "--server-id=1"
+            - "--log-bin=mysql-bin"
+            - "--binlog_format=ROW"
+      volumes:
+        - name: mysql-persistent-storage
+          emptyDir: {}
+
